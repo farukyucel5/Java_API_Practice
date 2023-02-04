@@ -40,15 +40,12 @@ public class Pet_Post_Request extends SwaggerBaseUrl {
         swaggerSpec.pathParam("pp1","pet");
         String[] photoUrl={"https://tr.pinterest.com/pin/679480662510500791/"};
         Pet_Category petCategory=new Pet_Category(57,"Dog");
-        System.out.println("petCategory = " + petCategory);
 
         TagsInnerBody tagsInnerBody=new TagsInnerBody(23,"kangal");
-        System.out.println("tagsInnerBody = " + tagsInnerBody);
 
         TagsInnerBody[] tagsInnerBodies={tagsInnerBody};
-        PetExpectedBody petRequestBody=new PetExpectedBody(554,petCategory,"Kılıc",photoUrl,tagsInnerBodies,"available");
-        System.out.println("petRequestBody = " + petRequestBody);
 
+        PetExpectedBody petRequestBody=new PetExpectedBody(554,petCategory,"Kılıc",photoUrl,tagsInnerBodies,"available");
         PetExpectedBody petExpectedBody=new PetExpectedBody(554,petCategory,"Kılıc",photoUrl,tagsInnerBodies,"available");
         Response response=given().spec(swaggerSpec).
                 accept(ContentType.JSON).
@@ -63,10 +60,6 @@ public class Pet_Post_Request extends SwaggerBaseUrl {
         assertEquals(petExpectedBody.getTags()[0].getId(),petRequestBody.getTags()[0].getId());
         assertEquals(petExpectedBody.getTags()[0].getName(),petRequestBody.getTags()[0].getName());
         assertEquals(petExpectedBody.getStatus(),petRequestBody.getStatus());
-
-
-
-        response.prettyPrint();
 
 
 
